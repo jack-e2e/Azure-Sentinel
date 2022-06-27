@@ -1,0 +1,93 @@
+{
+  "Name": "CUMULO_ALERT_FEED_CL",
+  "Properties": [
+    {
+      "Name": "TenantId",
+      "Type": "String"
+    },
+    {
+      "Name": "SourceSystem",
+      "Type": "String"
+    },
+    {
+      "Name": "TimeGenerated",
+      "Type": "String"
+    },
+    {
+      "Name": "api_callback_url_s",
+      "Type": "String"
+    },
+    {
+      "Name": "cumulo_alert_link_s",
+      "Type": "String"
+    },
+    {
+      "Name": "source_ip_s",
+      "Type": "String"
+    },
+    {
+      "Name": "destination_ip_s",
+      "Type": "String"
+    },
+    {
+      "Name": "query_type_s",
+      "Type": "String"
+    },
+    {
+      "Name": "first_response_target_s",
+      "Type": "String"
+    },
+    {
+      "Name": "ticket_resolution_target_s",
+      "Type": "String"
+    },
+    {
+      "Name": "service_level_s",
+      "Type": "String"
+    },
+    {
+      "Name": "local_rule_id_d",
+      "Type": "Real"
+    },
+    {
+      "Name": "id_d",
+      "Type": "Real"
+    },
+    {
+      "Name": "title_s",
+      "Type": "String"
+    },
+    {
+      "Name": "description_s",
+      "Type": "String"
+    },
+    {
+      "Name": "created_s",
+      "Type": "String"
+    },
+    {
+      "Name": "created_by_name_s",
+      "Type": "String"
+    },
+    {
+      "Name": "rule_name_s",
+      "Type": "String"
+    },
+    {
+      "Name": "class_title_s",
+      "Type": "String"
+    },
+    {
+      "Name": "status_title_s",
+      "Type": "String"
+    },
+    {
+      "Name": "priority_title_s",
+      "Type": "String"
+    },
+    {
+      "Name": "Type",
+      "Type": "String"
+    }
+  ]
+}

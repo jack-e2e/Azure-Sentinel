@@ -1,0 +1,16 @@
+{
+	"publisherId": "e2e-assure",
+	"offerId": "e2e_assure_offerId",
+	"firstPublishDate": "2022-06-15",
+	"providers": ["e2e-assure"],
+	"categories": {
+		"domains" : ["Security - Threat Protection"],
+		"verticals": []
+	},
+	"support": {
+	  "name": "e2e-assure",
+	  "email": "support@e2e-assure.com",
+	  "tier": "Partner",
+	  "link": "https://www.e2e-assure.com"
+	}
+}

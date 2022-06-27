@@ -1585,5 +1585,44 @@
         "templateRelativePath": "MicrosoftDefenderForEndPoint.json",
         "subtitle": "",
         "provider": "Microsoft Sentinel Community"
+      },
+      {
+        "workbookKey": "e2e-assure-CumuloAlertData",
+        "logoFileName": "e2e-assure-CumuloNDR.svg",
+        "description": "A workbook to provide details about alert information received from Cumulo platform",
+        "dataTypesDependencies": [],
+        "dataConnectorsDependencies": [],
+        "previewImagesFileNames": [ "E2EAssureCumuloAlertDataWhite1.png", "E2EAssureCumuloAlertDataBlack1.png" ],
+        "version": "1.0.0",
+        "title": "e2e-assure Cumulo Alert Data",
+        "templateRelativePath": "E2EAssureCumuloAlertData.json",
+        "subtitle": "",
+        "provider": "e2e-assure Ltd"
+      },
+      {
+        "workbookKey": "e2e-assure-CumuloThreatBriefs",
+        "logoFileName": "e2e-assure-CumuloNDR.svg",
+        "description": "A workbook to provide details about threat brief information received from Cumulo platform",
+        "dataTypesDependencies": [],
+        "dataConnectorsDependencies": [],
+        "previewImagesFileNames": [ "E2EAssureCumuloThreatBriefsWhite1.png", "E2EAssureCumuloThreatBriefsBlack1.png" ],
+        "version": "1.0.0",
+        "title": "e2e-assure Cumulo Threat Briefs",
+        "templateRelativePath": "E2EAssureCumuloThreatBriefs.json",
+        "subtitle": "",
+        "provider": "e2e-assure Ltd"
+      },
+      {
+        "workbookKey": "e2e-assure-CumuloAlertDetails",
+        "logoFileName": "e2e-assure-CumuloNDR.svg",
+        "description": "A workbook to provide details about select Cumulo Alert",
+        "dataTypesDependencies": [],
+        "dataConnectorsDependencies": [],
+        "previewImagesFileNames": [ "E2EAssureCumuloAlertDetailsWhite1.png", "E2EAssureCumuloAlertDetailsBlack1.png" ],
+        "version": "1.0.0",
+        "title": "e2e-assure Cumulo Alert Details",
+        "templateRelativePath": "E2EAssureCumuloAlertDetails.json",
+        "subtitle": "",
+        "provider": "e2e-assure Ltd"
       }
 ]

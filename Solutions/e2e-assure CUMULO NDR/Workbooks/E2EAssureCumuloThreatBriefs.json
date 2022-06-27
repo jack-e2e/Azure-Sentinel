@@ -1,0 +1,326 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "CUMULO_THREAT_BRIEF_CL | top 10 by TimeGenerated desc | project TimeGenerated, source_name_s, disclosure_date_s, priority_id_d, title_s, original_detail_s, external_id_s",
+        "size": 0,
+        "title": "10 MOST RECENT THREAT BRIEFS",
+        "timeContext": {
+          "durationMs": 2592000000
+        },
+        "exportToExcelOptions": "all",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "source_name_s",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "colors",
+                "thresholdsGrid": [
+                  {
+                    "operator": "==",
+                    "thresholdValue": "RSS_ARTICLE",
+                    "representation": "blue",
+                    "text": "FROM RSS"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "ANALYST",
+                    "representation": "redBright",
+                    "text": "SOC ANALYST"
+                  },
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "blue",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            },
+            {
+              "columnMatch": "priority_id_d",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "icons",
+                "thresholdsGrid": [
+                  {
+                    "operator": "==",
+                    "thresholdValue": "599",
+                    "representation": "1",
+                    "text": "Low"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "600",
+                    "representation": "2",
+                    "text": "Medium"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "602",
+                    "representation": "3",
+                    "text": "High"
+                  },
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "success",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            }
+          ],
+          "labelSettings": [
+            {
+              "columnId": "TimeGenerated",
+              "label": "Time Generated"
+            },
+            {
+              "columnId": "source_name_s",
+              "label": "Source"
+            },
+            {
+              "columnId": "disclosure_date_s",
+              "label": "Disclosure Date"
+            },
+            {
+              "columnId": "priority_id_d",
+              "label": "Priority"
+            },
+            {
+              "columnId": "title_s",
+              "label": "Title"
+            },
+            {
+              "columnId": "original_detail_s",
+              "label": "Original Detail"
+            },
+            {
+              "columnId": "external_id_s",
+              "label": "External Id"
+            }
+          ]
+        }
+      },
+      "name": "TOP 10 MOST RECENT BRIEFS"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "union withsource=_TableName CUMULO_THREAT_BRIEF_CL\n| summarize Count=count() by  source_name_s\n| render piechart",
+        "size": 1,
+        "title": "THREAT BRIEF SOURCES",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "chartSettings": {
+          "seriesLabelSettings": [
+            {
+              "seriesName": "RSS_ARTICLE",
+              "label": "FROM RSS"
+            },
+            {
+              "seriesName": "ANALYST",
+              "label": "FROM SOC INTEL"
+            }
+          ]
+        }
+      },
+      "customWidth": "50",
+      "name": "query - 0",
+      "styleSettings": {
+        "maxWidth": "33%"
+      }
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "union withsource=_TableName CUMULO_THREAT_BRIEF_CL\n| summarize Count=count() by  priority_id_d",
+        "size": 1,
+        "title": "THREAT BRIEFS BY PRIORITY",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "priority_id_d",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "icons",
+                "thresholdsGrid": [
+                  {
+                    "operator": "==",
+                    "thresholdValue": "599",
+                    "representation": "1",
+                    "text": "Low"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "600",
+                    "representation": "2",
+                    "text": "Medium"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "601",
+                    "representation": "3",
+                    "text": "High"
+                  },
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "success",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            },
+            {
+              "columnMatch": "Count",
+              "formatter": 3,
+              "formatOptions": {
+                "palette": "blue"
+              }
+            }
+          ],
+          "labelSettings": [
+            {
+              "columnId": "priority_id_d",
+              "label": "Priority"
+            },
+            {
+              "columnId": "Count",
+              "label": "Count"
+            }
+          ]
+        },
+        "chartSettings": {
+          "seriesLabelSettings": [
+            {
+              "seriesName": "RSS_ARTICLE",
+              "label": "FROM RSS"
+            },
+            {
+              "seriesName": "ANALYST",
+              "label": "FROM SOC INTEL"
+            }
+          ]
+        }
+      },
+      "customWidth": "50",
+      "name": "query - 1",
+      "styleSettings": {
+        "maxWidth": "33%"
+      }
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "CUMULO_THREAT_BRIEF_CL | order by disclosure_date_s desc | where priority_id_d == 601 | project disclosure_date_s, priority_id_d, title_s | limit 5",
+        "size": 0,
+        "title": "5 MOST RECENT HIGH PRIORITY THREAT BRIEFS",
+        "timeContext": {
+          "durationMs": 2592000000
+        },
+        "exportToExcelOptions": "all",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "source_name_s",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "colors",
+                "thresholdsGrid": [
+                  {
+                    "operator": "==",
+                    "thresholdValue": "RSS_ARTICLE",
+                    "representation": "blue",
+                    "text": "FROM RSS"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "ANALYST",
+                    "representation": "redBright",
+                    "text": "SOC ANALYST"
+                  },
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "blue",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            },
+            {
+              "columnMatch": "priority_id_d",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "icons",
+                "thresholdsGrid": [
+                  {
+                    "operator": "==",
+                    "thresholdValue": "599",
+                    "representation": "1",
+                    "text": "Low"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "600",
+                    "representation": "2",
+                    "text": "Medium"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "601",
+                    "representation": "3",
+                    "text": "High"
+                  },
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "success",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            }
+          ],
+          "labelSettings": [
+            {
+              "columnId": "disclosure_date_s",
+              "label": "Disclosure Date"
+            },
+            {
+              "columnId": "priority_id_d",
+              "label": "Priority"
+            },
+            {
+              "columnId": "title_s",
+              "label": "Title"
+            }
+          ]
+        }
+      },
+      "customWidth": "50",
+      "name": "TOP 5 MOST RECENT HIGH PRIORITY BRIEFS ",
+      "styleSettings": {
+        "maxWidth": "33%"
+      }
+    }
+  ],
+  "fallbackResourceIds": [],
+  "fromTemplateId": "sentinel-e2e-assure-CumuloThreatBriefs",
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}

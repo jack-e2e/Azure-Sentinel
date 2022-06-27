@@ -1,0 +1,81 @@
+{
+  "Name": "CUMULO_THREAT_BRIEF_CL",
+  "Properties": [
+    {
+      "Name": "TenantId",
+      "Type": "String"
+    },
+    {
+      "Name": "SourceSystem",
+      "Type": "String"
+    },
+    {
+      "Name": "TimeGenerated",
+      "Type": "String"
+    },
+    {
+      "Name": "image_url_s",
+      "Type": "String"
+    },
+    {
+      "Name": "id_d",
+      "Type": "Real"
+    },
+    {
+      "Name": "title_s",
+      "Type": "String"
+    },
+    {
+      "Name": "original_detail_s",
+      "Type": "String"
+    },
+    {
+      "Name": "disclosure_date_s",
+      "Type": "String"
+    },
+    {
+      "Name": "link_s",
+      "Type": "String"
+    },
+    {
+      "Name": "priority_id_d",
+      "Type": "Real"
+    },
+    {
+      "Name": "source_name_s",
+      "Type": "String"
+    },
+    {
+      "Name": "external_id_s",
+      "Type": "String"
+    },
+    {
+      "Name": "published_d",
+      "Type": "Real"
+    },
+    {
+      "Name": "active_d",
+      "Type": "Real"
+    },
+    {
+      "Name": "modified_s",
+      "Type": "String"
+    },
+    {
+      "Name": "created_s",
+      "Type": "String"
+    },
+    {
+      "Name": "created_by_d",
+      "Type": "Real"
+    },
+    {
+      "Name": "modified_by_d",
+      "Type": "Real"
+    },
+    {
+      "Name": "Type",
+      "Type": "String"
+    }
+  ]
+}

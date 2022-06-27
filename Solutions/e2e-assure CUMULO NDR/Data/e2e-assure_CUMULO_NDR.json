@@ -1,0 +1,12 @@
+{
+  "Name": "e2e-assure_CUMULO_NDR",
+  "Author": "e2e-assure - support@e2e-assure.com",
+  "Logo": "<img src=\"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/e2e-assure_CUMULO_NDR/Data%20Connectors/Logo/e2e-assure-CUMULONDR.svg\" width=\"60px\" height=\"60px\">",
+  "Description": "e2e-assure CUMULO NDR data connector provides the capability to ingest alert and case logs into Azure Sentinel using the e2e-assure CUMULO Rest API.",
+  "Data Connectors": [
+    "Data Connectors/E2EAssureCumuloNDR.json"
+  ],
+  "BasePath": "C:/GitHub/Azure-Sentinel/Solutions/e2e-assure_CUMULO_NDR",
+  "Version": "1.0.0",
+  "Metadata": "SolutionMetadata.json"
+}

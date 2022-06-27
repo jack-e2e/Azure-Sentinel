@@ -1,0 +1,362 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 1,
+      "content": {
+        "json": "## Cumulo Alert Data\n---\nThis Workbook shows Security Alert data harvested via e2e Cumulo Connector"
+      },
+      "name": "text - 0"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "union withsource=_TableName CUMULO_ALERT_FEED_CL\n| summarize Count=count() by  case(isempty(priority_title_s), \"Needs Triage\", priority_title_s)\n| render piechart",
+        "size": 1,
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "chartSettings": {
+          "seriesLabelSettings": [
+            {
+              "seriesName": "Critical",
+              "color": "redDark"
+            },
+            {
+              "seriesName": "High",
+              "color": "redBright"
+            }
+          ]
+        }
+      },
+      "customWidth": "50",
+      "name": "query - 0",
+      "styleSettings": {
+        "maxWidth": "33%"
+      }
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "union withsource=_TableName CUMULO_ALERT_FEED_CL\n| summarize Count=count() by case(isempty(sub_status_title_s), \"Needs Triage\", sub_status_title_s)\n| render piechart",
+        "size": 1,
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "chartSettings": {
+          "seriesLabelSettings": [
+            {
+              "seriesName": "Needs Triage",
+              "color": "orange"
+            },
+            {
+              "seriesName": "In Progress",
+              "color": "blue"
+            },
+            {
+              "seriesName": "Resolved",
+              "color": "green"
+            }
+          ]
+        }
+      },
+      "customWidth": "50",
+      "name": "query - 1",
+      "styleSettings": {
+        "maxWidth": "33%"
+      }
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "union withsource=_TableName CUMULO_ALERT_FEED_CL\n| summarize Count=count() by case(isempty(editor_name_s), \"Default Customer\", editor_name_s)\n| render barchart",
+        "size": 1,
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "customWidth": "50",
+      "name": "query - 2",
+      "styleSettings": {
+        "maxWidth": "33%"
+      }
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "CUMULO_ALERT_FEED_CL | top 10 by TimeGenerated desc | project class_title_s,id_d,priority_title_s=case(isempty(priority_title_s), \"Untriaged\", priority_title_s),sub_status_title_s = case(isempty(sub_status_title_s), \"Needs Triage\", sub_status_title_s),open_minutes_d,editor_name_s=case(isempty(editor_name_s),\"Default\",editor_name_s),title_s,description_s,rule_name_s,modified_by_name_s",
+        "size": 0,
+        "title": "Cumulo Alert Feed - 10 Most recent events received",
+        "timeContext": {
+          "durationMs": 2592000000
+        },
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "class_title_s",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "colors",
+                "thresholdsGrid": [
+                  {
+                    "operator": "==",
+                    "thresholdValue": "ALERT",
+                    "representation": "orange",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "TICKET",
+                    "representation": "green",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "INCIDENT",
+                    "representation": "magenta",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "blue",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            },
+            {
+              "columnMatch": "priority_title_s",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "icons",
+                "thresholdsGrid": [
+                  {
+                    "operator": "==",
+                    "thresholdValue": "Low",
+                    "representation": "Sev3",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "Medium",
+                    "representation": "Sev2",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "High",
+                    "representation": "Sev1",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "Critical",
+                    "representation": "Sev0",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "Untriaged",
+                    "representation": "error",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "Unavailable",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            },
+            {
+              "columnMatch": "sub_status_title_s",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "colors",
+                "thresholdsGrid": [
+                  {
+                    "operator": "==",
+                    "thresholdValue": "Needs Triage",
+                    "representation": "orange",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "In Progress",
+                    "representation": "blue",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "Resolved",
+                    "representation": "green",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": null,
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            },
+            {
+              "columnMatch": "open_minutes_d",
+              "formatter": 4,
+              "formatOptions": {
+                "palette": "blue"
+              }
+            },
+            {
+              "columnMatch": "MG",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "ManagementGroupName",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "Computer",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "RawData",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "integration_service_id_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "customer_id_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "combined_rule_exec_id_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "local_rule_history_id_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "created_by_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "assigned_to_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "ticket_class_id_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "modified_by_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "ticket_status_id_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "ticket_priority_id_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "sub_status_id_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "published_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "requiring_immediate_update_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "requiring_triage_d",
+              "formatter": 5
+            },
+            {
+              "columnMatch": "update_needed_d",
+              "formatter": 5
+            }
+          ],
+          "rowLimit": 10,
+          "labelSettings": [
+            {
+              "columnId": "class_title_s",
+              "label": "Class"
+            },
+            {
+              "columnId": "id_d",
+              "label": "Alert ID"
+            },
+            {
+              "columnId": "priority_title_s",
+              "label": "Priority"
+            },
+            {
+              "columnId": "sub_status_title_s",
+              "label": "Status"
+            },
+            {
+              "columnId": "open_minutes_d",
+              "label": "open minutes"
+            },
+            {
+              "columnId": "editor_name_s",
+              "label": "Customer"
+            },
+            {
+              "columnId": "title_s",
+              "label": "Title"
+            },
+            {
+              "columnId": "description_s",
+              "label": "Description"
+            },
+            {
+              "columnId": "rule_name_s",
+              "label": "Rule Name"
+            },
+            {
+              "columnId": "modified_by_name_s",
+              "label": "Modified By"
+            }
+          ]
+        }
+      },
+      "name": "10 Most recent events received"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "CUMULO_ALERT_FEED_CL | make-series ALERTS = count() default = 0 on TimeGenerated from ago(31d) to now() step 1h",
+        "size": 1,
+        "title": "Cumulo Events in Last 30 days",
+        "noDataMessage": "Data feed received no messages within last 7 days",
+        "timeContext": {
+          "durationMs": 2592000000
+        },
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "visualization": "timechart"
+      },
+      "name": "query - 3"
+    }
+  ],
+  "isLocked": false,
+  "fallbackResourceIds": [],
+  "fromTemplateId": "sentinel-e2e-assure-CumuloAlertData",
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}
